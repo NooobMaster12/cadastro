@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+<!DOCTYPE html>
+
+
+{% block content %}
+
+              {% for chave in chaves %}
+              <p>
+                  {% if chave.disponivel %} - {% else %}{{chave.sala.numero}} - {{chave.sala.descricao}} - {% endif %}
+                  {% if chave.disponivel %}
+                      <a href="{% url 'alugar_chave' chave.id %}">Pegar chave</a>
+                  {% else %}
+                        <a href="{% url 'devolver_chave' chave.id %}">Devolver chave</a>
+                  {% endif %}
+              </p>
+              <button></button>
+          {% endfor %}      
+          {% endblock content %}      

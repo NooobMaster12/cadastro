@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="row mb-2">
+  {% for aluguel in alugueis %}
+  <div class="col-md-6">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <h3 class="mb-0">Usuario - {{aluguel.usuario.nome}}</h3>
+        <div class="mb-1 text-muted">Função - {{aluguel.usuario.funcao}}</div>
+        <p class="card-text mb-auto">Sala - {{aluguel.chave.sala.descricao}}-{{aluguel.chave.sala.numero}}</p>
+        <p class="card-text mb-auto">Data aluguel - {{aluguel.data_aluguel}}</p>
+        <p class="card-text mb-auto">Data devolução - {{aluguel.data_devolucao}}</p>
+         <a href="" class="btn btn-primary mt-2">Detalhes</a>
+         <br>
+      </div>
+    </div>
+  
+  </div>
+  
+  {% endfor %}
+</div>
+
+
+{% endblock content %}    
