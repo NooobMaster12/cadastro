@@ -38,7 +38,7 @@ class Chave(models.Model):
 @receiver(post_save, sender=Chave)
 def criar_qrcode(sender, instance, created, **kwargs):
     if created:
-        sala_numero = instance.sala.numero
+        sala_numero = instance.id
         qr_code = qrcode.QRCode(
             version=1,
             error_correction=qrcode.constants.ERROR_CORRECT_L,
