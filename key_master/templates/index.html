@@ -15,6 +15,8 @@
   <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/"> -->
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+
   <!-- Custom styles for this template -->
   <link href="{% static 'css/cover.css' %}" rel="stylesheet">
   {# Load CSS and JavaScript #}
@@ -112,10 +114,14 @@
       <a href="{% url 'listar_chaves_disponiveis' %}" class="btn btn-lg btn-light fw-bold border-white bg-white">PEGAR CHAVE</a>
       <a href="{% url 'listar_chaves_alugadas' %}" class="btn btn-lg btn-light fw-bold border-white bg-white">DEVOLVER CHAVE</a>
       </p>
+      <div id="camera-container" style="display: none;">
+        <video id="camera" width="300" height="200"></video>
+        <canvas id="canvas" style="display: none;"></canvas>
+      </div>
     </main>
     {% endblock content %}
     <footer class="mt-auto text-dark-50">
-      <p>KEY MASTER    <a href="https://getbootstrap.com/" class="text-dark">SENAC</a>
+      <p> KEY MASTER <a href="" class="text-dark">SENAC</a>
  
     </footer>
   </div>

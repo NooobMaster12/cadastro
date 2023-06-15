@@ -1,5 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
+from io import BytesIO
+import qrcode
+
 
 # Create your models here.
 
@@ -27,14 +32,27 @@ class Chave(models.Model):
     sala = models.ForeignKey(Sala, on_delete= models.CASCADE, related_name= 'chaves')
     qr_code = models.ImageField(upload_to='qr_codes/', null=True, blank=True)
 
+    def __str__(self):
+        return "{} - {}".format(self.sala.numero, self.sala.descricao)
     
 @receiver(post_save, sender=Chave)
 def criar_qrcode(sender, instance, created, **kwargs):
     if created:
-        qr_code = generate_qrcode(instance.codigo)
-        instance.qr_code.save(f'{instance.id}.png', qr_code)
-    def __str__(self):
-        return '{} - {}'.format(self.disponivel, self.sala.descricao)
+        sala_numero = instance.sala.numero
+        qr_code = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=4,
+        )
+        qr_code.add_data(sala_numero)
+        qr_code.make(fit=True)
+
+        qr_code_image = qr_code.make_image()
+
+        stream = BytesIO()
+        qr_code_image.save(stream, "PNG")
+        instance.qr_code.save(f'{instance.sala.numero}.png', stream)
     
     
     

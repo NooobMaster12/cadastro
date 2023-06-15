@@ -4,12 +4,15 @@ from django.views.generic.list import ListView
 from .models import Aluguel,Funcionario,Chave
 from django.contrib import messages
 from django.utils import timezone
+from django.http import JsonResponse
 
 # Create your views here.
 
 
 def index(request):
     return render(request, 'index.html')
+
+
 
 
 def sucess(request):
