@@ -21,6 +21,8 @@
     <link id="ui-current-skin" rel='stylesheet' type='text/css' media='all' href="{% static 'assets/css/skin-colors/skin0.css'%}"/>
 	<link rel='stylesheet' type='text/css' media='all' href="{% static 'assets/css/font-awesome.min.css'%}" />
 	<link rel='stylesheet' type='text/css' media='all' href="{% static 'assets/plugins/select2/select2.min.css'%}" />
+    <link rel='stylesheet' type='text/css' media='all' href="{% static 'assets/css/card.css'%}" />
+
 
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'assets/plugins/amcharts/export.css'%}" />
     <!-- Fonts -->
@@ -114,7 +116,7 @@
                 <div class="left-side">
                     <h1 class="logo">
                         <a href="index.html">
-                            <img src="assets/images/Vector-Smart-Object2.png" alt="BitWallet" />
+                            <img src="{% static 'assets/img/logo_keymaster.png' %}" alt="keymaster" />
                         </a>
                     </h1>
                     <aside id="search-3" class="widget widget_search">
@@ -150,7 +152,7 @@
 			            	</button>
 				            <h1 class="logo">
 				                  <a href="index.html">
-				                      <img src="assets/images/Vector-Smart-Object1.png" alt="BitWallet" />
+				                      <img src="{% static 'assets/img/logo_keymaster.png' %}" alt="keymaster" />
 				                  </a>
 				            </h1>
 			            </div>
@@ -176,6 +178,8 @@
                                         </li>
                                     
                                         <li class="to_whitepaper menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href=""> LOGIN</a></li>
+                                        <li class="to_whitepaper menu-item menu-item-type-custom menu-item-object-custom"><a  href="{% url 'logout' %}"> sair</a></li>
+
                                        
                                        
                                     </ul>
@@ -191,7 +195,7 @@
 	    <!-- HEADER TITLE BREADCRUBS SECTION -->
 	    
 	    <!-- Page content -->
-        {% block content %}
+        
 	    <div class="no-padding content-area no-sidebar" id="primary">
         	<div class="container-fluid">
         		<div class="row">
@@ -1287,7 +1291,7 @@
 			</div>-->
 		</div>
         
-        {% endblock content %}
+        
         <!-- LEFT BAR -->
 	    <div class="btn-sticky-left">
             <div class="skin">

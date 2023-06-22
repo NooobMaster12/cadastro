@@ -12,6 +12,10 @@ from django.http import JsonResponse
 def index(request):
     return render(request, 'index.html')
 
+def inicio_login(request):
+    return render(request, 'iniciologin.html')
+
+
 
 
 
