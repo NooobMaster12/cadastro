@@ -1,70 +1,23 @@
-<!DOCTYPE html>
+
+{% extends 'index.html' %}
 
 {% load static %}
 
+{% block content %}
+
+<script>
+    setTimeout(function() {
+        window.location.href = "{% url 'logout' %}";
+    }, 3000);
+</script>
+
+    
+    <div class="logo"><b>O<span>BRIGADO! </span><span></span>Chave adquirida com sucesso!</b></div>
 
 
-<html>
-<head>
-    <title>Agradecimento</title>
-    <link rel="stylesheet" href="{% static 'css/success.css' %}">
+    <a href="" id="btn-twtr" target="_b">VOLTE SEMPRE</a>
+    {% endblock content %}
 
-</head>
-
-<body>
-    <div class="container">
-        <div class="message">
-            Obrigado por usar nosso sistema!
-        </div>
-        <div class="clock">
-            <div class="hour-hand"></div>
-            <div class="minute-hand"></div>
-            <div class="second-hand"></div>
-        </div>
-        <div id="countdown"></div>
-    </div>
-
-    <script>
-        function countdown() {
-            var countdownElement = document.getElementById('countdown');
-            var remainingSeconds = 5; // Contagem regressiva de 10 segundos
-
-            var interval = setInterval(function () {
-                var minutes = Math.floor(remainingSeconds / 60);
-                var seconds = remainingSeconds % 60;
-
-                countdownElement.innerHTML = ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2);
-
-                remainingSeconds--;
-
-                if (remainingSeconds < 0) {
-                    clearInterval(interval);
-                    // Fazer o logout ou redirecionar para a página de logout
-                    window.location.href = "{% url 'logout' %}";
-                }
-
-                // Atualizar a posição dos ponteiros no relógio
-                var date = new Date();
-                var hour = date.getHours() % 12;
-                var minute = date.getMinutes();
-                var second = date.getSeconds();
-
-                var hourHand = document.querySelector('.hour-hand');
-                var minuteHand = document.querySelector('.minute-hand');
-                var secondHand = document.querySelector('.second-hand');
-
-                hourHand.style.transform = 'rotate(' + (hour * 30 + minute / 2) + 'deg)';
-                minuteHand.style.transform = 'rotate(' + (minute * 6 + second / 10) + 'deg)';
-                secondHand.style.transform = 'rotate(' + (second * 6) + 'deg)';
-            }, 1000);
-        }
-
-        // Chamar a função countdown ao carregar a página
-        window.onload = function () {
-            countdown();
-        };
-    </script>
-  
 </body>
 </html>
 

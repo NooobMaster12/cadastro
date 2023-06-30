@@ -65,16 +65,20 @@ body {
 }
 
 .line {
-    height: 1px;
-    width: 45%;
-    background-color: #E0E0E0;
-    margin-top: 10px;
+    height: 4px;
+    width: 100%;
+    background-color: #000000;
+    margin-top: 0.8px;
 }
 
-.or {
+/*.or {
     width: 10%;
     font-weight: bold;
-}
+}*/
+
+.or.text-center {
+    text-align: justify;
+  }
 
 .text-sm {
     font-size: 14px !important;

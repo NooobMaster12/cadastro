@@ -4,7 +4,9 @@
 
 
 {% block content %}
+
 <video id="preview"></video>
+
 <script>
     let scanner = new Instascan.Scanner(
         {
@@ -25,14 +27,38 @@
     });
 </script>
 
-              {% for chave in chaves %}
-              <p>
-                  {% if chave.disponivel %} {{chave.sala.numero}} - {{chave.sala.descricao}} - {% else %} {% endif %}
-                  {% if chave.disponivel %}
-                      <a href="{% url 'alugar_chave' chave.id %}">Pegar chave</a>
-                  {% else %}
-                        <a href="{% url 'devolver_chave' chave.id %}">Devolver chave</a>
-                  {% endif %}
-              </p>
-          {% endfor %}    
-    {% endblock content %}      
+<table>
+    <tr>
+      <th>Número da Sala</th>
+      <th>Descrição da Sala</th>
+      <th>Ação</th>
+    </tr>
+  
+    {% for chave in chaves %}
+      <tr>
+        <td>
+          {% if chave.disponivel %}
+            {{ chave.sala.numero }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
+        <td>
+          {% if chave.disponivel %}
+            {{ chave.sala.descricao }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
+        <td>
+          {% if chave.disponivel %}
+            <a href="{% url 'alugar_chave' chave.id %}">Pegar chave</a>
+          {% else %}
+            <a href="{% url 'devolver_chave' chave.id %}">Devolver chave</a>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  {% endblock content %}
+          

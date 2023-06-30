@@ -12,11 +12,8 @@ from django.http import JsonResponse
 def index(request):
     return render(request, 'index.html')
 
-def inicio_login(request):
-    return render(request, 'iniciologin.html')
-
-
-
+def sucess_devolver(request):
+    return render(request, 'sucess_devolver.html')
 
 
 def sucess(request):
@@ -69,7 +66,7 @@ def devolver_chave(request, chave_id):
         chave.disponivel = True
         chave.save()
         
-        return redirect('sucess')
+        return redirect('sucess_devolver')
     else:
         messages.error(request, 'Não foi possível encontrar o registro do aluguel desta chave.')
         return redirect('listar_chaves_alugadas')   

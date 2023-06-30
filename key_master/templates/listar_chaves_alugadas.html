@@ -27,15 +27,24 @@
     });
 </script>
 
-              {% for chave in chaves %}
-              <p>
-                  {% if chave.disponivel %} - {% else %}{{chave.sala.numero}} - {{chave.sala.descricao}} - {% endif %}
-                  {% if chave.disponivel %}
-                      <a href="{% url 'alugar_chave' chave.id %}">Pegar chave</a>
-                  {% else %}
-                        <a href="{% url 'devolver_chave' chave.id %}">Devolver chave</a>
-                  {% endif %}
-              </p>
-              <button></button>
-          {% endfor %}      
-          {% endblock content %}      
+
+  
+    <table>
+        <tr>
+          <th>Número</th>
+          <th>Descrição</th>
+          <th>Ação</th>
+        </tr>
+        {% for chave in chaves %}
+          {% if not chave.disponivel %}
+            <tr>
+              <td>{{ chave.sala.numero }}</td>
+              <td>{{ chave.sala.descricao }}</td>
+              <td><a href="{% url 'devolver_chave' chave.id %}">Devolver chave</a></td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+        
+
+      </table>
+      {% endblock content %}

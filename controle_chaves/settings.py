@@ -123,7 +123,7 @@ MEDIA_URL = "/media/"
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = '/static/assets/css/webfonts/all.min.css'
+#STATIC_ROOT = '/static/assets/css/webfonts/all.min.css'
 
 
 # Default primary key field type
@@ -131,3 +131,4 @@ STATIC_ROOT = '/static/assets/css/webfonts/all.min.css'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGOUT_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'index'

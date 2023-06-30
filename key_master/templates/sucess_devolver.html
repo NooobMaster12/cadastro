@@ -1,0 +1,24 @@
+
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<script>
+    setTimeout(function() {
+        window.location.href = "{% url 'logout' %}";
+    }, 3000);
+</script>
+
+    
+    <div class="logo"><b>O<span>BRIGADO! </span><span></span>Chave devolvida com sucesso!</b></div>
+
+
+    <a href="" id="btn-twtr" target="_b">VOLTE SEMPRE</a>
+    {% endblock content %}
+
+</body>
+</html>
+
+
